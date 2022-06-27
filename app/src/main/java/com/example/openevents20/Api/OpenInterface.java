@@ -9,4 +9,8 @@ import retrofit2.http.POST;
 public interface OpenInterface {
     @POST("users")
     Call<User>register(@Body User usuario);
+
+    @POST("users/login")
+    Call<User>login(@Body User usuario);
+
 }

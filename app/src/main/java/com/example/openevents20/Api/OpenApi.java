@@ -30,4 +30,7 @@ public class OpenApi {
         openInterface.register(usuario).enqueue(callback);
     }
 
+    public void login(User usuario, Callback<User> callback){
+        openInterface.login(usuario).enqueue(callback);
+    }
 }

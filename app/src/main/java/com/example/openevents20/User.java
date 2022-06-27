@@ -24,5 +24,10 @@ public class User implements Serializable {
         this.image = image;
     }
 
+    public User(String email, String password){
+        this.email = email;
+        this.password = password;
+    }
+
 
 }
