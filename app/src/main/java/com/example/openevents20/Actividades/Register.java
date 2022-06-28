@@ -1,4 +1,4 @@
-package com.example.openevents20;
+package com.example.openevents20.Actividades;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.openevents20.Api.OpenApi;
+import com.example.openevents20.R;
+import com.example.openevents20.User;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,11 +34,14 @@ public class Register extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<User> call, Response<User> response) {
                     Log.d("RESPUESTA","CORRECTO"+response.body());
+                    finish();
+
                 }
 
                 @Override
                 public void onFailure(Call<User> call, Throwable t) {
                     Log.d("RESPUESTA","INCORRECTO"+t);
+                    //todo hacer toast de que ha habido un problema con la api
                 }
             });
         });

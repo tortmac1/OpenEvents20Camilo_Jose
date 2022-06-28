@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:opacity="opaque">
+
+    <item android:drawable="@color/AzulCielo" />
+
+    <item >
+
+    </item>
+
+    <item android:width="1000dp" android:height="1000dp" android:bottom="50dp" android:left="30dp" android:right="30dp">
+
+        <bitmap android:src="@drawable/logo_events" />
+    </item>
+
+</layer-list>

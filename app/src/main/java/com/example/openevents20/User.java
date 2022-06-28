@@ -8,6 +8,7 @@ public class User implements Serializable {
     private String email;
     private String password;
     private String image;
+    private String accessToken;
 
     public User(String name, String last_name, String email, String image) {
         this.name = name;
@@ -29,5 +30,27 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public String getLast_name() {
+        return last_name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public String getAccessToken() {
+        return accessToken;
+    }
 }

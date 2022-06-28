@@ -1,6 +1,12 @@
 package com.example.openevents20.Api;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
+import com.example.openevents20.Event;
 import com.example.openevents20.User;
+
+import java.util.ArrayList;
 
 import retrofit2.Callback;
 import retrofit2.Retrofit;
@@ -33,4 +39,17 @@ public class OpenApi {
     public void login(User usuario, Callback<User> callback){
         openInterface.login(usuario).enqueue(callback);
     }
+
+    public void listEvents(Context c, Callback<ArrayList<Event>> callback) {
+        openInterface.listEvents(searchtoken(c)).enqueue(callback);
+    }
+
+
+    public String searchtoken(Context c){
+        SharedPreferences sharedPreferences = c.getSharedPreferences("validador", Context.MODE_PRIVATE);
+        String token = sharedPreferences.getString("token", "");
+
+        return token;
+    }
+
 }
