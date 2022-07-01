@@ -5,20 +5,53 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="true"
+    android:visibility="visible"
     app:cardUseCompatPadding="true">
 
     <LinearLayout
         android:id="@+id/item_event"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:padding="50dp">
+
+        <ImageView
+            android:id="@+id/miImagen"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            />
 
 
         <TextView
             android:id="@+id/name_event"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="evento" />
+            android:layout_gravity="center"
+            android:text="Titulo de evento"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/date_event"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Fecha inicio de evento"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/location_event"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Locacion de evento"
+            android:textAlignment="center" />
+
+
     </LinearLayout>
+
 
 </androidx.cardview.widget.CardView>

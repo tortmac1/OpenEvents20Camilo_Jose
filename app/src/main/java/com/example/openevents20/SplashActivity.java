@@ -6,31 +6,38 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 
 import com.example.openevents20.Actividades.Login;
 import com.example.openevents20.Actividades.MenuFragments;
-import com.example.openevents20.R;
+import com.example.openevents20.Actividades.Register;
 
 public class SplashActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.splash);
+        setContentView(R.layout.activity_splash);
 
-        Log.d("Entrados en el Splash", "Etramos en el splash");
-        String token = searchtoken();
-        if (!token.equals("")){
-            startActivity(new Intent(this, MenuFragments.class));
-        }
+        Log.d("error", "entra aqui");
 
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        startActivity(new Intent(this, Login.class));
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                String token = searchtoken();
+                if (!token.equals("")){
+                    startActivity(new Intent(SplashActivity.this, MenuFragments.class));
+                    finish();
+                }else {
+                    startActivity(new Intent(SplashActivity.this, Login.class));
+                    finish();
+                }
+
+            }
+        }, 2000);
     }
 
     public String searchtoken(){
@@ -39,6 +46,4 @@ public class SplashActivity extends AppCompatActivity {
 
         return token;
     }
-
-
 }

@@ -20,7 +20,22 @@ public interface OpenInterface {
     @POST("users/login")
     Call<User>login(@Body User usuario);
 
+    @GET("users")
+    Call<ArrayList<User>> listUsers(@Header("Authorization") String token);
+    @GET("users/{id}")
+    Call<User> getUser(@Header("Authorization") String token, @Path("id") Integer id);
+
+    @GET("users/{id}/events")
+    Call<ArrayList<Event>> listMyEvents(@Header("Authorization") String token, @Path("id") Integer id);
+
     @GET("events")
     Call<ArrayList<Event>> listEvents(@Header("Authorization") String token);
+
+    @POST("events")
+    Call<Event>createEvent(@Header("Authorization") String token, @Body Event evento);
+
+
+
+
 
 }

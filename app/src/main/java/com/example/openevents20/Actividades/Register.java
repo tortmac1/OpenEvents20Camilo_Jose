@@ -21,7 +21,7 @@ public class Register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        Button button_register = findViewById(R.id.btn_register);
+        Button button_register = findViewById(R.id.btn_create_event);
         button_register.setOnClickListener(view -> {
             EditText nombre = findViewById(R.id.nombre);
             EditText apellido = findViewById(R.id.apellido);

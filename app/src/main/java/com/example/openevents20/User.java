@@ -9,6 +9,7 @@ public class User implements Serializable {
     private String password;
     private String image;
     private String accessToken;
+    private Integer id;
 
     public User(String name, String last_name, String email, String image) {
         this.name = name;
@@ -52,5 +53,13 @@ public class User implements Serializable {
 
     public String getAccessToken() {
         return accessToken;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

@@ -15,6 +15,16 @@ public class Event implements Serializable {
     private Integer owner_id;
     private String date;
 
+    public Event(String name, String image, String location, String description, String eventStart_date, String eventEnd_date, Integer n_participators, String type) {
+        this.name = name;
+        this.image = image;
+        this.location = location;
+        this.description = description;
+        this.eventStart_date = eventStart_date;
+        this.eventEnd_date = eventEnd_date;
+        this.n_participators = n_participators;
+        this.type = type;
+    }
 
     public Integer getId() {
         return id;

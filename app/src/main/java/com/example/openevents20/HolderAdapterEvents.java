@@ -3,10 +3,10 @@ package com.example.openevents20;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.strictmode.WebViewMethodCalledOnWrongThreadViolation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -22,17 +22,19 @@ public class HolderAdapterEvents extends RecyclerView.Adapter<HolderAdapterEvent
     Context c;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView textView;
+        TextView name, date, location;
         LinearLayout item_event;
         ViewHolder(View view) {
             super(view);
-            textView = view.findViewById(R.id.name_event);
+            name = view.findViewById(R.id.name_event);
+            date = view.findViewById(R.id.date_event);
+            location = view.findViewById(R.id.location_event);
             item_event = view.findViewById(R.id.item_event);
             // TODO añadir image view y demas atributos --> item_events.xml
         }
 
         public void bind(int pos) {
-            textView.setText(eventos.get(pos).getName());
+            name.setText(eventos.get(pos).getName());
 
             item_event.setOnClickListener(v -> {
                 Intent intent = new Intent((Activity)c, EventInfo.class);
@@ -55,6 +57,9 @@ public class HolderAdapterEvents extends RecyclerView.Adapter<HolderAdapterEvent
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+
+
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_events, parent, false);
         return new HolderAdapterEvents.ViewHolder(itemView);
     }
