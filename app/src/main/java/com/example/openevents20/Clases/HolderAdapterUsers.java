@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.openevents20.Actividades.EventInfo;
+import com.example.openevents20.Actividades.UserInfo;
 import com.example.openevents20.R;
 
 import java.io.Serializable;
@@ -37,10 +38,10 @@ public class HolderAdapterUsers extends RecyclerView.Adapter<HolderAdapterUsers.
         public void bind(int pos) {
 
             Log.d("camilo","error"+usuarios.get(pos).getName());
-            name.setText(usuarios.get(pos).getName());
+            name.setText(usuarios.get(pos).getName()+" "+usuarios.get(pos).getLast_name());
 
             item_user.setOnClickListener(v -> {
-                Intent intent = new Intent((Activity) c, EventInfo.class);
+                Intent intent = new Intent((Activity) c, UserInfo.class);
                 intent.putExtra("user", (Serializable) usuarios.get(pos));
 
                 c.startActivity(intent);

@@ -14,11 +14,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.openevents20.Actividades.EditMyUser;
 import com.example.openevents20.Actividades.Login;
 import com.example.openevents20.Api.OpenApi;
 import com.example.openevents20.R;
 import com.example.openevents20.Clases.User;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -28,7 +30,7 @@ import retrofit2.Response;
 
 public class MyUser extends Fragment {
 
-
+User user = null;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +46,19 @@ public class MyUser extends Fragment {
         int id = searchid(getContext());
 
         searchUser(id, view);
+
+        Button edit = view.findViewById(R.id.edit_profile);
+        edit.setOnClickListener(view1 -> {
+            Intent i = new Intent(getActivity(), EditMyUser.class);
+            i.putExtra("user", (Serializable) user);
+
+            startActivity(i);
+        });
+
+
+
+
+
 
         Button button_register = view.findViewById(R.id.log_out);
         button_register.setOnClickListener(v -> {
@@ -82,6 +97,7 @@ public class MyUser extends Fragment {
                 Log.d("Camilo", "Entra for");
                 for (User u : response.body()) {
                     if (u.getId() == id) {
+                        user = u;
                         name.setText(u.getName());
                         last_name.setText(u.getLast_name());
                         email.setText(u.getEmail());

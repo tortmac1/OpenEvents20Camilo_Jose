@@ -16,6 +16,9 @@
             android:name=".Actividades.UserInfo"
             android:exported="false" />
         <activity
+            android:name=".Actividades.EditMyUser"
+            android:exported="false" />
+        <activity
             android:name=".Actividades.CreateEvent"
             android:exported="false" />
         <activity

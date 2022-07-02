@@ -74,6 +74,10 @@ public class OpenApi {
         openInterface.leaveEvent(searchtoken(c), idEvent).enqueue(callback);
     }
 
+    public void getEventsBest(Context c, Callback<ArrayList<Event>> callback) {
+        openInterface.getBestEvents(searchtoken(c)).enqueue(callback);
+    }
+
 
     public String searchtoken(Context c){
         SharedPreferences sharedPreferences = c.getSharedPreferences("validador", Context.MODE_PRIVATE);

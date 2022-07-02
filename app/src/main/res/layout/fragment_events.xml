@@ -14,6 +14,13 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <Button
+            android:id="@+id/btn_best"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="BEST" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/container_events"
             android:layout_width="match_parent"

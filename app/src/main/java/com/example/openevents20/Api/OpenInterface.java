@@ -42,6 +42,9 @@ public interface OpenInterface {
     @DELETE("events/{id}/assistances")
     Call<Soporte> leaveEvent(@Header("Authorization") String token, @Path("id") Integer id);
 
+    @GET("events/best")
+    Call<ArrayList<Event>> getBestEvents(@Header("Authorization") String token);
+
 
 
 

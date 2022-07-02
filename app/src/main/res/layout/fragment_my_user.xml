@@ -62,6 +62,16 @@
             android:textAlignment="center"
             android:text="imagen del usuario" />
 
+        <Button
+            android:id="@+id/edit_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:text="Editar perfil">
+
+        </Button>
+
 
         <Button
             android:id="@+id/log_out"
