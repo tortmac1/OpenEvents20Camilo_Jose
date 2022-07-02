@@ -7,17 +7,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.openevents20.Api.OpenApi;
 import com.example.openevents20.R;
-import com.example.openevents20.User;
+import com.example.openevents20.Clases.User;
 
-import java.sql.Time;
 import java.util.ArrayList;
 
 import retrofit2.Call;

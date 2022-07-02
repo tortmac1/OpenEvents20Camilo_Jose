@@ -1,4 +1,4 @@
-package com.example.openevents20;
+package com.example.openevents20.Clases;
 
 import android.app.Activity;
 import android.content.Context;
@@ -6,12 +6,14 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.openevents20.Actividades.EventInfo;
+import com.example.openevents20.R;
 
 import java.io.Serializable;
 import java.util.ArrayList;

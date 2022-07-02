@@ -15,11 +15,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.openevents20.Actividades.Login;
 import com.example.openevents20.Api.OpenApi;
-import com.example.openevents20.CreateEvent;
-import com.example.openevents20.Event;
-import com.example.openevents20.HolderAdapterEvents;
+import com.example.openevents20.Actividades.CreateEvent;
+import com.example.openevents20.Clases.Event;
+import com.example.openevents20.Clases.HolderAdapterEvents;
 import com.example.openevents20.R;
 
 import java.util.ArrayList;

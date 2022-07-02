@@ -9,7 +9,7 @@ import android.widget.EditText;
 
 import com.example.openevents20.Api.OpenApi;
 import com.example.openevents20.R;
-import com.example.openevents20.User;
+import com.example.openevents20.Clases.User;
 
 import retrofit2.Call;
 import retrofit2.Callback;

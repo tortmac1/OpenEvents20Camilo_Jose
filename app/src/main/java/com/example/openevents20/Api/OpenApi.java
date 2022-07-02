@@ -3,15 +3,15 @@ package com.example.openevents20.Api;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.openevents20.Event;
-import com.example.openevents20.User;
+import com.example.openevents20.Clases.Event;
+import com.example.openevents20.Clases.Soporte;
+import com.example.openevents20.Clases.User;
 
 import java.util.ArrayList;
 
 import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Header;
 
 public class OpenApi {
     private static OpenApi openApi;
@@ -45,8 +45,13 @@ public class OpenApi {
         openInterface.getUser(searchtoken(c), id).enqueue(callback);
     }
 
+
     public void listUsers(String token, Callback<ArrayList<User>> callback) {
         openInterface.listUsers("Bearer " + token).enqueue(callback);
+    }
+
+    public void listUsers2(Context c, Callback<ArrayList<User>> callback) {
+        openInterface.listUsers(searchtoken(c)).enqueue(callback);
     }
 
     public void listEvents(Context c, Callback<ArrayList<Event>> callback) {
@@ -60,6 +65,15 @@ public class OpenApi {
     public void createEvent(Context c,Event evento, Callback<Event> callback) {
         openInterface.createEvent(searchtoken(c), evento).enqueue(callback);
     }
+
+    public void joinEvent(Context c, int idEvent, Callback<Soporte> callback){
+        openInterface.joinEvent(searchtoken(c), idEvent).enqueue(callback);
+    }
+
+    public void leaveEvent(Context c, int idEvent, Callback<Soporte> callback){
+        openInterface.leaveEvent(searchtoken(c), idEvent).enqueue(callback);
+    }
+
 
     public String searchtoken(Context c){
         SharedPreferences sharedPreferences = c.getSharedPreferences("validador", Context.MODE_PRIVATE);

@@ -1,13 +1,14 @@
 package com.example.openevents20.Api;
 
-import com.example.openevents20.Event;
-import com.example.openevents20.User;
+import com.example.openevents20.Clases.Event;
+import com.example.openevents20.Clases.Soporte;
+import com.example.openevents20.Clases.User;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
@@ -22,6 +23,7 @@ public interface OpenInterface {
 
     @GET("users")
     Call<ArrayList<User>> listUsers(@Header("Authorization") String token);
+
     @GET("users/{id}")
     Call<User> getUser(@Header("Authorization") String token, @Path("id") Integer id);
 
@@ -33,6 +35,13 @@ public interface OpenInterface {
 
     @POST("events")
     Call<Event>createEvent(@Header("Authorization") String token, @Body Event evento);
+
+    @POST("events/{id}/assistances")
+    Call<Soporte> joinEvent(@Header("Authorization") String token, @Path("id") Integer id);
+
+    @DELETE("events/{id}/assistances")
+    Call<Soporte> leaveEvent(@Header("Authorization") String token, @Path("id") Integer id);
+
 
 
 

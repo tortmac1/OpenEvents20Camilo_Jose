@@ -1,4 +1,4 @@
-package com.example.openevents20;
+package com.example.openevents20.Actividades;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,9 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
-import com.example.openevents20.Actividades.Login;
-import com.example.openevents20.Actividades.MenuFragments;
-import com.example.openevents20.Actividades.Register;
+import com.example.openevents20.R;
 
 public class SplashActivity extends AppCompatActivity {
 

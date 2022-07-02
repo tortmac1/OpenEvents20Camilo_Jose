@@ -1,4 +1,4 @@
-package com.example.openevents20;
+package com.example.openevents20.Actividades;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.openevents20.Api.OpenApi;
+import com.example.openevents20.Clases.Event;
+import com.example.openevents20.R;
 
 import retrofit2.Call;
 import retrofit2.Callback;

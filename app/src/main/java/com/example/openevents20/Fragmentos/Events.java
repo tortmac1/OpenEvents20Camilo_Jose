@@ -10,11 +10,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.example.openevents20.Api.OpenApi;
-import com.example.openevents20.Event;
-import com.example.openevents20.HolderAdapterEvents;
+import com.example.openevents20.Clases.Event;
+import com.example.openevents20.Clases.HolderAdapterEvents;
 import com.example.openevents20.R;
 
 import java.util.ArrayList;

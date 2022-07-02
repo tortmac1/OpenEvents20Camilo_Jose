@@ -7,19 +7,17 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.openevents20.Actividades.Login;
-import com.example.openevents20.Actividades.Register;
 import com.example.openevents20.Api.OpenApi;
-import com.example.openevents20.Event;
 import com.example.openevents20.R;
-import com.example.openevents20.User;
+import com.example.openevents20.Clases.User;
 
 import java.util.ArrayList;
 
@@ -42,34 +40,10 @@ public class MyUser extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_my_user, container, false);
-        TextView name, last_name, email, password, image;
 
-            name = view.findViewById(R.id.name);
-            last_name = view.findViewById(R.id.last_name);
-            email = view.findViewById(R.id.email);
-            password = view.findViewById(R.id.password);
-            image = view.findViewById(R.id.image);
         int id = searchid(getContext());
 
-
-        OpenApi api = OpenApi.getInstance();
-        api.getUser(getContext(),id , new Callback<User>() {
-            @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-            User usuario = response.body();
-            name.setText(usuario.getName());
-            last_name.setText(usuario.getLast_name());
-            email.setText(usuario.getEmail());
-            password.setText(usuario.getPassword());
-            image.setText(usuario.getImage());
-
-            }
-
-            @Override
-            public void onFailure(Call<User> call, Throwable t) {
-
-            }
-        });
+        searchUser(id, view);
 
         Button button_register = view.findViewById(R.id.log_out);
         button_register.setOnClickListener(v -> {
@@ -90,4 +64,40 @@ public class MyUser extends Fragment {
 
         return id;
     }
+
+
+    private void searchUser(int id, View view) {
+
+        TextView name, last_name, email, password, image;
+
+        name = view.findViewById(R.id.name);
+        last_name = view.findViewById(R.id.last_name);
+        email = view.findViewById(R.id.email);
+        password = view.findViewById(R.id.password);
+        image = view.findViewById(R.id.image);
+
+        OpenApi.getInstance().listUsers2(getContext(), new Callback<ArrayList<User>>() {
+            @Override
+            public void onResponse(Call<ArrayList<User>> call, Response<ArrayList<User>> response) {
+                Log.d("Camilo", "Entra for");
+                for (User u : response.body()) {
+                    if (u.getId() == id) {
+                        name.setText(u.getName());
+                        last_name.setText(u.getLast_name());
+                        email.setText(u.getEmail());
+                        password.setText(u.getPassword());
+                        image.setText(u.getImage());
+                        Log.d("Camilo", "Correct");
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<User>> call, Throwable t) {
+                //TODO crear un toast avisando error api
+                Log.d("Camilo", "Error");
+            }
+        });
+    }
+
 }

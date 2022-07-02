@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EventInfo">
+    tools:context=".Actividades.EventInfo">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,13 +32,6 @@
             android:textColor="@color/black"
             android:text="Titulo de Evento" />
 
-        <TextView
-            android:id="@+id/image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:textAlignment="center"
-            android:text="Imagen del evento" />
 
         <TextView
             android:id="@+id/location"
@@ -87,6 +80,18 @@
             android:layout_gravity="center"
             android:textAlignment="center"
             android:text="Tipo de evento" />
+
+        <Button
+            android:id="@+id/unirse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:layout_marginTop="10dp"
+            android:text="Unirse">
+
+        </Button>
+
 
 
 

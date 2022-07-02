@@ -1,4 +1,4 @@
-package com.example.openevents20;
+package com.example.openevents20.Clases;
 
 import java.io.Serializable;
 
