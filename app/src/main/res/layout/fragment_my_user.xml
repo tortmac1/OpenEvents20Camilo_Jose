@@ -30,7 +30,7 @@
             android:layout_gravity="center"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:text="nombre del usuario" />
+            android:text="@string/titulo_nombre_del_usuario" />
 
         <TextView
             android:id="@+id/last_name"
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textAlignment="center"
-            android:text="Apellido del usuario" />
+            android:text="@string/titulo_apellido_del_usuario" />
 
         <TextView
             android:id="@+id/email"
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textAlignment="center"
-            android:text="Email del usuario" />
+            android:text="@string/titulo_email_del_usuario" />
 
         <TextView
             android:id="@+id/password"
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textAlignment="center"
-            android:text="Password del usuario" />
+            android:text="@string/titulo_password_del_usuario" />
 
         <TextView
             android:id="@+id/image"
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textAlignment="center"
-            android:text="imagen del usuario" />
+            android:text="@string/titulo_imagen_del_usuario" />
 
         <Button
             android:id="@+id/edit_profile"
@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textAlignment="center"
-            android:text="Editar perfil">
+            android:text="@string/titulo_editar_perfil">
 
         </Button>
 
@@ -81,7 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textAlignment="center"
-            android:text="Cerrar sesion" />
+            android:text="@string/titulo_cerrar_sesion" />
 
 
     </LinearLayout>

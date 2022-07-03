@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Titulo de evento"
+            android:text="@string/titulo_de_evento"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="20sp" />
@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Fecha inicio de evento"
+            android:text="@string/titulo_fecha_de_inicio_del_evento"
             android:textAlignment="center" />
 
         <TextView
@@ -47,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Locacion de evento"
+            android:text="@string/titulo_localizacion_del_evento"
             android:textAlignment="center" />
 
 

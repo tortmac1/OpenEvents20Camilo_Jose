@@ -30,7 +30,7 @@
             android:layout_gravity="center"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:text="Titulo de Evento" />
+            android:text="@string/titulo_de_evento" />
 
 
         <TextView
@@ -39,7 +39,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:textAlignment="center"
-            android:text="localizacion del evento" />
+            android:text="@string/titulo_localizacion_del_evento" />
 
         <TextView
             android:id="@+id/description"
@@ -47,7 +47,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:textAlignment="center"
-            android:text="descripcion del evento" />
+            android:text="@string/titulo_descripcion_del_evento" />
 
         <TextView
             android:id="@+id/eventStart_date"
@@ -55,7 +55,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:textAlignment="center"
-            android:text="Fecha de inicio del evento" />
+            android:text="@string/titulo_fecha_de_inicio_del_evento" />
 
         <TextView
             android:id="@+id/eventEnd_date"
@@ -63,7 +63,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:textAlignment="center"
-            android:text="Fecha de fin del evento" />
+            android:text="@string/titulo_fecha_de_fin_del_evento" />
 
         <TextView
             android:id="@+id/n_participators"
@@ -71,7 +71,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:textAlignment="center"
-            android:text="Numero de participantes del evento" />
+            android:text="@string/titulo_numero_de_participantes_del_evento" />
 
         <TextView
             android:id="@+id/type"
@@ -79,7 +79,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:textAlignment="center"
-            android:text="Tipo de evento" />
+            android:text="@string/titulo_tipo_de_evento" />
 
         <Button
             android:id="@+id/unirse"
@@ -89,7 +89,7 @@
             android:textAlignment="center"
             android:layout_marginTop="10dp"
             android:drawableRight="@drawable/add"
-            android:text="Unirse">
+            android:text="@string/titulo_unirse">
 
         </Button>
 
@@ -101,7 +101,7 @@
             android:textAlignment="center"
             android:layout_marginTop="10dp"
             android:drawableRight="@drawable/edit"
-            android:text="edit">
+            android:text="@string/titulo_editar">
 
         </Button>
 
@@ -113,7 +113,7 @@
             android:textAlignment="center"
             android:layout_marginTop="10dp"
             android:drawableRight="@drawable/delete"
-            android:text="eliminate">
+            android:text="@string/titulo_eliminar">
 
         </Button>
 

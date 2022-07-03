@@ -15,7 +15,7 @@
             android:id="@+id/tv_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Crear Evento"
+            android:text="@string/titulo_crear_evento"
             android:textAlignment="center"
             android:textSize="50sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +28,7 @@
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="Nombre"
+            android:hint="@string/titulo_nombre"
             android:padding="15dp"
             android:textSize="15sp"
             tools:layout_editor_absoluteX="16dp"
@@ -39,7 +39,7 @@
             android:id="@+id/image"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="Imagen"
+            android:hint="@string/titulo_imagen"
             android:padding="15dp"
             android:textSize="15sp"
             tools:layout_editor_absoluteX="0dp"
@@ -49,7 +49,7 @@
             android:id="@+id/location"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="locacion"
+            android:hint="@string/titulo_locacion"
             android:padding="15dp"
             android:textSize="15sp"
             tools:layout_editor_absoluteX="0dp"
@@ -59,7 +59,7 @@
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="descripcion"
+            android:hint="@string/titulo_descripcion"
             android:padding="15dp"
             android:textSize="15sp"
             tools:layout_editor_absoluteX="16dp"
@@ -69,14 +69,14 @@
             android:id="@+id/eventStart_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="fecha_inicio"
+            android:hint="@string/titulo_fecha_inicio"
             android:textSize="15sp" />
 
         <EditText
             android:id="@+id/eventEnd_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="fecha_final"
+            android:hint="@string/titulo_fecha_final"
             android:textSize="15sp"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="273dp" />
@@ -84,13 +84,13 @@
             android:id="@+id/n_participators"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="numero_participantes"
+            android:hint="@string/titulo_numero_participantes"
             android:textSize="15sp" />
         <EditText
             android:id="@+id/type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="tipo"
+            android:hint="@string/titulo_tipo"
             android:textSize="15sp" />
 
 
@@ -98,9 +98,7 @@
             android:id="@+id/btn_create_event"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="Crear"
+            android:text="@string/titulo_crear"
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image"
