@@ -1,7 +1,9 @@
 package com.example.openevents20.Fragmentos;
 
+import android.graphics.Path;
 import android.os.Bundle;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,10 +13,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.openevents20.Api.OpenApi;
 import com.example.openevents20.Clases.Event;
 import com.example.openevents20.Clases.HolderAdapterEvents;
+import com.example.openevents20.Clases.HolderAdapterUsers;
+import com.example.openevents20.Clases.User;
 import com.example.openevents20.R;
 
 import java.util.ArrayList;
@@ -25,6 +30,9 @@ import retrofit2.Response;
 
 public class Events extends Fragment {
     LinearLayoutManager linearLayoutManager;
+    SearchView buscador;
+    HolderAdapterEvents eventsAdapter;
+    RecyclerView eventsContainer;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,8 +60,8 @@ public class Events extends Fragment {
                         RecyclerView eventsContainer = view.findViewById(R.id.container_events);
                         eventsContainer.setLayoutManager(linearLayoutManager);
                         eventsContainer.setAdapter(eventsAdapter);
-                    }else {
-                        Log.d("error", ""+ response.body());
+                    } else {
+                        Log.d("error", "" + response.body());
                     }
 
 
@@ -61,22 +69,59 @@ public class Events extends Fragment {
 
                 @Override
                 public void onFailure(Call<ArrayList<Event>> call, Throwable t) {
-
+                    Toast.makeText(getContext(), "ERROR en la Api", Toast.LENGTH_SHORT).show();
                 }
             });
         });
-        OpenApi api = OpenApi.getInstance();
-        api.listEvents(getContext(), new Callback<ArrayList<Event>>() {
+        listEvents(view);
+
+        buscador = view.findViewById(R.id.buscador_event);
+        buscador.clearFocus();
+        buscador.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                if (s.isEmpty()) {
+                    listEvents(view);
+                }
+                OpenApi.getInstance().searchEvents(getContext(), null, s, null, new Callback<ArrayList<Event>>() {
+                    @Override
+                    public void onResponse(Call<ArrayList<Event>> call, Response<ArrayList<Event>> response) {
+                        if (response.body() != null){
+                            eventsAdapter = new HolderAdapterEvents(response.body(), getContext());
+                            eventsContainer.setLayoutManager(linearLayoutManager);
+                            eventsContainer.setAdapter(eventsAdapter);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ArrayList<Event>> call, Throwable t) {
+                        Toast.makeText(getContext(),"ERROR en la Api", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                return false;
+            }
+        });
+
+        return view;
+    }
+
+    private void listEvents(View view) {
+        OpenApi.getInstance().listEvents(getContext(), new Callback<ArrayList<Event>>() {
             @Override
             public void onResponse(Call<ArrayList<Event>> call, Response<ArrayList<Event>> response) {
                 if (response.body() != null) {
                     ArrayList<Event> eventos = response.body();
-                    HolderAdapterEvents eventsAdapter = new HolderAdapterEvents(eventos, getContext());
-                    RecyclerView eventsContainer = view.findViewById(R.id.container_events);
+                    eventsAdapter = new HolderAdapterEvents(eventos, getContext());
+                    eventsContainer = view.findViewById(R.id.container_events);
                     eventsContainer.setLayoutManager(linearLayoutManager);
                     eventsContainer.setAdapter(eventsAdapter);
-                }else {
-                    Log.d("error", ""+ response.body());
+                } else {
+                    Toast.makeText(getContext(),"ERROR en la Api", Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -84,10 +129,11 @@ public class Events extends Fragment {
 
             @Override
             public void onFailure(Call<ArrayList<Event>> call, Throwable t) {
-
+                Toast.makeText(getContext(),"ERROR en la Api", Toast.LENGTH_SHORT).show();
             }
+
         });
-        return view;
+
     }
 
 

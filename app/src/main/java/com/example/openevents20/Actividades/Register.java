@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.openevents20.Api.OpenApi;
 import com.example.openevents20.R;
@@ -33,14 +34,14 @@ public class Register extends AppCompatActivity {
             OpenApi.getInstance().register(usuario, new Callback<User>() {
                 @Override
                 public void onResponse(Call<User> call, Response<User> response) {
-                    Log.d("RESPUESTA","CORRECTO"+response.body());
+                    Toast.makeText(getApplicationContext(),"Registrado con exito", Toast.LENGTH_SHORT).show();
                     finish();
 
                 }
 
                 @Override
                 public void onFailure(Call<User> call, Throwable t) {
-                    Log.d("RESPUESTA","INCORRECTO"+t);
+                    Toast.makeText(getApplicationContext(),"ERROR en la Api", Toast.LENGTH_SHORT).show();
                     //todo hacer toast de que ha habido un problema con la api
                 }
             });

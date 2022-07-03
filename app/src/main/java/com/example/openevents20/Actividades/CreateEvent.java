@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.openevents20.Api.OpenApi;
 import com.example.openevents20.Clases.Event;
@@ -43,12 +44,13 @@ public class CreateEvent extends AppCompatActivity {
             OpenApi.getInstance().createEvent(this, evento, new Callback<Event>() {
                 @Override
                 public void onResponse(Call<Event> call, Response<Event> response) {
-                    Log.d("response", ""+ response.body().getDescription());
+                    Toast.makeText(getApplicationContext(),"Evento creado con exito", Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
                 public void onFailure(Call<Event> call, Throwable t) {
-                    Log.d("error", "Error");
+
+                    Toast.makeText(getApplicationContext(),"ERROR en la Api", Toast.LENGTH_SHORT).show();
                 }
             });
         });

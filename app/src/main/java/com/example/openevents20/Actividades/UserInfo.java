@@ -29,12 +29,16 @@ public class UserInfo extends AppCompatActivity {
         name.setText(usuario.getName());
         lastname.setText(usuario.getLast_name());
         email.setText(usuario.getEmail());
-        //TODO hacer que Picasso lea todas las imagenes con su load
         cargarImagen = findViewById(R.id.image);
-        Picasso.get()
-                .load(usuario.getImage())
-                .error(R.mipmap.ic_launcher_round)
-                .into(cargarImagen);
+        try {
+            String path = usuario.getImage();
+            Picasso.get()
+                    .load(path)
+                    .error(R.mipmap.ic_launcher_round)
+                    .into(cargarImagen);
+        }catch (IllegalArgumentException  e){
+
+        }
 
 
 

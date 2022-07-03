@@ -10,6 +10,7 @@ import android.os.CountDownTimer;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.openevents20.Api.OpenApi;
 import com.example.openevents20.R;
@@ -93,11 +94,11 @@ public class Login extends AppCompatActivity {
         OpenApi.getInstance().listUsers(token, new Callback<ArrayList<User>>() {
             @Override
             public void onResponse(Call<ArrayList<User>> call, Response<ArrayList<User>> response) {
-                Log.d("Camilo", "Entra for");
+
                 for (User u : response.body()) {
                     if (u.getEmail().equals(email)) {
                         usuario.setId(u.getId());
-                        Log.d("Camilo", "Correct");
+                        Toast.makeText(getApplicationContext(),"Logueado con exito", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -105,7 +106,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onFailure(Call<ArrayList<User>> call, Throwable t) {
                 //TODO crear un toast avisando error api
-                Log.d("Camilo", "Error");
+                Toast.makeText(getApplicationContext(),"ERROR en la Api", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -15,10 +15,12 @@
 
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-        </ImageView>
+            android:id="@+id/miImagen"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            />
 
         <TextView
             android:id="@+id/name"

@@ -55,13 +55,15 @@
             android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image"
+            android:drawableRight="@drawable/login"
             tools:layout_editor_absoluteX="24dp" />
 
         <Button
             android:id="@+id/btn_create_event"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Register" />
+            android:text="Register"
+            android:drawableRight="@drawable/register"/>
 
     </LinearLayout>
 

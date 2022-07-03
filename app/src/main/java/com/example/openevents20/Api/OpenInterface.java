@@ -12,7 +12,9 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface OpenInterface {
     @POST("users")
@@ -27,8 +29,14 @@ public interface OpenInterface {
     @GET("users/{id}")
     Call<User> getUser(@Header("Authorization") String token, @Path("id") Integer id);
 
+    @PUT("users")
+    Call<User> editUser(@Header("Authorization") String token, @Body User user);
+
     @GET("users/{id}/events")
     Call<ArrayList<Event>> listMyEvents(@Header("Authorization") String token, @Path("id") Integer id);
+
+    @GET("users/search")
+    Call<ArrayList<User>> searchEmail(@Header("Authorization") String token, @Query("s") String email);
 
     @GET("events")
     Call<ArrayList<Event>> listEvents(@Header("Authorization") String token);
@@ -44,6 +52,17 @@ public interface OpenInterface {
 
     @GET("events/best")
     Call<ArrayList<Event>> getBestEvents(@Header("Authorization") String token);
+
+    @PUT("events/{id}")
+    Call<Event> editEvent(@Header("Authorization") String token, @Path("id") Integer id, @Body Event event);
+
+    @DELETE("events/{id}")
+    Call<Event> deleteEvent(@Header("Authorization") String token, @Path("id") Integer id);
+
+    @GET("events/search")
+    Call<ArrayList<Event>> searchEvents(@Header("Authorization") String token, @Query("location") String location, @Query("keyword") String keyword, @Query("date") String date);
+
+
 
 
 

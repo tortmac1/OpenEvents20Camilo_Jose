@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.appcompat.widget.SearchView;
+import android.widget.Toast;
 
 import com.example.openevents20.Api.OpenApi;
 import com.example.openevents20.Clases.HolderAdapterUsers;
@@ -25,7 +27,9 @@ import retrofit2.Response;
 
 public class SearchUsers extends Fragment {
     LinearLayoutManager linearLayoutManager;
-
+    SearchView buscador;
+    HolderAdapterUsers usersAdapter;
+    RecyclerView usersContainer;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,18 +45,19 @@ public class SearchUsers extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_search_users, container, false);
 
+
         OpenApi api = OpenApi.getInstance();
         api.listUsers2(getContext(), new Callback<ArrayList<User>>() {
             @Override
             public void onResponse(Call<ArrayList<User>> call, Response<ArrayList<User>> response) {
                 if (response.body() != null) {
                     ArrayList<User> usuarios = response.body();
-                    HolderAdapterUsers usersAdapter = new HolderAdapterUsers(usuarios, getContext());
-                    RecyclerView usersContainer = view.findViewById(R.id.container_users);
+                    usersAdapter = new HolderAdapterUsers(usuarios, getContext());
+                    usersContainer = view.findViewById(R.id.container_users);
                     usersContainer.setLayoutManager(linearLayoutManager);
                     usersContainer.setAdapter(usersAdapter);
                 } else {
-                    Log.d("error", "" + response.body());
+                    Toast.makeText(getContext(),"ERROR en la Api", Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -60,9 +65,38 @@ public class SearchUsers extends Fragment {
 
             @Override
             public void onFailure(Call<ArrayList<User>> call, Throwable t) {
-                //TODO agregar error
+                Toast.makeText(getContext(),"ERROR en la Api", Toast.LENGTH_SHORT).show();
             }
         });
+
+        buscador = view.findViewById(R.id.buscador_email);
+        buscador.clearFocus();
+        buscador.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                OpenApi.getInstance().searchEmail(getContext(), s, new Callback<ArrayList<User>>() {
+                    @Override
+                    public void onResponse(Call<ArrayList<User>> call, Response<ArrayList<User>> response) {
+                        if (response.body() != null){
+                            usersAdapter = new HolderAdapterUsers(response.body(), getContext());
+                            usersContainer.setAdapter(usersAdapter);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ArrayList<User>> call, Throwable t) {
+
+                    }
+                });
+                return false;
+            }
+        });
+
         return view;
     }
 }

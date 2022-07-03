@@ -54,6 +54,14 @@ public class OpenApi {
         openInterface.listUsers(searchtoken(c)).enqueue(callback);
     }
 
+    public void editUser(Context c, User user, Callback<User> callback){
+        openInterface.editUser(searchtoken(c), user).enqueue(callback);
+    }
+
+    public void searchEmail(Context c, String email, Callback<ArrayList<User>> callback){
+        openInterface.searchEmail(searchtoken(c), email).enqueue(callback);
+    }
+
     public void listEvents(Context c, Callback<ArrayList<Event>> callback) {
         openInterface.listEvents(searchtoken(c)).enqueue(callback);
     }
@@ -76,6 +84,18 @@ public class OpenApi {
 
     public void getEventsBest(Context c, Callback<ArrayList<Event>> callback) {
         openInterface.getBestEvents(searchtoken(c)).enqueue(callback);
+    }
+
+    public void editEvent(Context c, int idEvent, Event event, Callback<Event> callback) {
+        openInterface.editEvent(searchtoken(c), idEvent, event).enqueue(callback);
+    }
+
+    public void deleteEvent(Context c, int idEvent, Callback<Event> callback) {
+        openInterface.deleteEvent(searchtoken(c), idEvent).enqueue(callback);
+    }
+
+    public void searchEvents(Context c, String location, String keyword, String date,  Callback<ArrayList<Event>> callback){
+        openInterface.searchEvents(searchtoken(c), location, keyword, date).enqueue(callback);
     }
 
 

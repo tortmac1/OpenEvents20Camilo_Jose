@@ -12,13 +12,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.openevents20.Actividades.EditMyUser;
 import com.example.openevents20.Actividades.Login;
 import com.example.openevents20.Api.OpenApi;
 import com.example.openevents20.R;
 import com.example.openevents20.Clases.User;
+import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -30,7 +33,8 @@ import retrofit2.Response;
 
 public class MyUser extends Fragment {
 
-User user = null;
+    User user = null;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +51,7 @@ User user = null;
 
         searchUser(id, view);
 
+
         Button edit = view.findViewById(R.id.edit_profile);
         edit.setOnClickListener(view1 -> {
             Intent i = new Intent(getActivity(), EditMyUser.class);
@@ -54,10 +59,6 @@ User user = null;
 
             startActivity(i);
         });
-
-
-
-
 
 
         Button button_register = view.findViewById(R.id.log_out);
@@ -71,9 +72,10 @@ User user = null;
 
             startActivity(new Intent(getActivity(), Login.class));
         });
-        return  view;
+        return view;
     }
-    public Integer searchid(Context c){
+
+    public Integer searchid(Context c) {
         SharedPreferences sharedPreferences = c.getSharedPreferences("validador", Context.MODE_PRIVATE);
         Integer id = sharedPreferences.getInt("id", -1);
 
@@ -84,12 +86,14 @@ User user = null;
     private void searchUser(int id, View view) {
 
         TextView name, last_name, email, password, image;
+        ImageView cargarImagen;
 
         name = view.findViewById(R.id.name);
         last_name = view.findViewById(R.id.last_name);
         email = view.findViewById(R.id.email);
         password = view.findViewById(R.id.password);
         image = view.findViewById(R.id.image);
+        cargarImagen = view.findViewById(R.id.miImagen);
 
         OpenApi.getInstance().listUsers2(getContext(), new Callback<ArrayList<User>>() {
             @Override
@@ -103,15 +107,21 @@ User user = null;
                         email.setText(u.getEmail());
                         password.setText(u.getPassword());
                         image.setText(u.getImage());
-                        Log.d("Camilo", "Correct");
+
+
+                        Picasso.get()
+                                .load(u.getImage())
+                                .error(R.mipmap.ic_launcher_round)
+                                .into(cargarImagen);
+
+
                     }
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<User>> call, Throwable t) {
-                //TODO crear un toast avisando error api
-                Log.d("Camilo", "Error");
+                Toast.makeText(getContext(),"ERROR en la Api", Toast.LENGTH_SHORT).show();
             }
         });
     }
